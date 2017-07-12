@@ -5,24 +5,28 @@ import java.util.Random;
 
 public class Task1 {
 
+    //Function to initialize array of type int
     public static int[] arrayInitialize(int length, int content) {
         int[] arr = new int[length];
         Arrays.setAll(arr, i -> content);
         return arr;
     }
 
+    //Function to initialize array of type double
     public static double[] arrayInitialize(int length, double content) {
         double[] arr = new double[length];
         Arrays.setAll(arr, i -> content);
         return arr;
     }
 
+    //Function to initialize array of type String
     public static String[] arrayInitialize(int length, String content) {
         String[] arr = new String[length];
         Arrays.setAll(arr, i -> content);
         return arr;
     }
 
+    //Function to initialize the array of type Integer with random numbers
     public static Integer[] randomArrayInitialize(int length) {
         Random random = new Random();
         Integer[] arr = new Integer[length];
@@ -30,11 +34,13 @@ public class Task1 {
         return arr;
     }
 
+    //Function to delete the selected array element
     public static Integer[] deleteElementOfArray(int index, Integer... arr) {
         arr[index] = 0;
         return arr;
     }
 
+    //Function for testing
     public static void test() {
         int[] arr = arrayInitialize(5, 3);
         double[] arr2 = arrayInitialize(5, 2.9);

@@ -6,6 +6,7 @@ import java.util.regex.Pattern;
 
 public class Task2 {
 
+    //Function for finding length of text excluding spaces
     public static int lengthWithoutSpaces(String str) {
         int length = 0;
         for (char ch : str.toCharArray()) {
@@ -14,6 +15,7 @@ public class Task2 {
         return length;
     }
 
+    //Function for finding the number of letters
     public static int numbersOfLetters(String str) {
         int count;
         Pattern pattern = Pattern.compile("[A-Za-zА-Яа-я]", Pattern.UNICODE_CHARACTER_CLASS);
@@ -22,19 +24,17 @@ public class Task2 {
         return count;
     }
 
+    //Function for finding the number of words in text
     public static int numberOfWords(String str) {
-        while(!((str.charAt(0) >= 'A' && str.charAt(0) <= 'Z') || (str.charAt(0) >= 'a' && str.charAt(0) <= 'z'))
-                && !((str.charAt(0) >= 'А' && str.charAt(0) <= 'Я') || (str.charAt(0) >= 'а' && str.charAt(0) <= 'я'))) {
-            str = str.replaceFirst(Pattern.compile("\\d+|[^а-яА-ЯёЁa-zA-Z]+", Pattern.UNICODE_CHARACTER_CLASS).pattern(), "");
-        }
-        str = str.replaceAll(Pattern.compile("\\d+|[^а-яА-ЯёЁa-zA-Z]+['-]+", Pattern.UNICODE_CHARACTER_CLASS).pattern(), " ");
-        return str.split(" +").length;
+        return devider(str).length;
     }
 
+    //Function for finding number of sentences in text
     public static int numberOfSentences(String str) {
         return str.split("[.!?(...)]+ +").length;
     }
 
+    //Function for finding number of words in sentences
     public static void numberOfWordsInSentences(String str) {
         String[] string = str.split("[.!?(...)]+ +");
         for (int i = 0; i < string.length; i++) {
@@ -42,8 +42,14 @@ public class Task2 {
         }
     }
 
+    //Function for deviding text on words
+    public static String[] devider(String str) {
+        return str.replaceAll("[\\p{Punct}&&[^'-]]", " ").replaceAll("[0-9]", " ").trim().split(" +");
+    }
+
+    //Function for finding the longest word in text
     public static String theLongestWord(String str) {
-        String[] string = str.replaceAll("[\\p{P}&&[^'-]]", " ").split(" +");
+        String[] string = devider(str);
         String maxStr = string[0];
         for (int i = 1; i < string.length; i++) {
             if(maxStr.length() < string[i].length()) maxStr = string[i];
@@ -51,8 +57,9 @@ public class Task2 {
         return maxStr;
     }
 
+    //Function for finding the short word in text
     public static String theShortWord(String str) {
-        String[] string = str.replaceAll("[\\p{P}&&[^'-]]", " ").split(" +");
+        String[] string = devider(str);
         String minStr = "";
         for (int i = 0; minStr.length() < 3; i++) {
             if(string[i].length() >= 3) {
@@ -65,8 +72,9 @@ public class Task2 {
         return minStr;
     }
 
+    //Function for finding palindromes in text
     public static void palindromeChecker(String str) {
-        String[] string = str.replaceAll("[\\p{P}&&[^'-]]", " ").split(" +");
+        String[] string = devider(str);
         StringBuilder[] stringBuilder = new StringBuilder[string.length];
         for (int i = 0; i < string.length; i++) {
             stringBuilder[i] = new StringBuilder(string[i].toLowerCase());
@@ -78,7 +86,9 @@ public class Task2 {
         }
     }
 
+    //Function for testing
     public static void stringAnalizer(String str) {
+        System.out.println("Предложение: " + str);
         System.out.println("Длина текста: " + str.length() + " символов, " + lengthWithoutSpaces(str) + " без учета пробелов.");
         System.out.println("Количество слов: " + numberOfWords(str));
         System.out.println("Количество букв: " + numbersOfLetters(str));
@@ -92,5 +102,7 @@ public class Task2 {
 
     public static void main(String[] args) throws IOException {
         stringAnalizer("Шел казак куда-то вдаль! На груди была медаль. ");
+        stringAnalizer(" !^$@hello83redivider42world!#$HEllo World!!!");
+        stringAnalizer("In the year 2035, humanoid robots serve humanity, which is protected by the Three Laws of Robotics.");
     }
 }
