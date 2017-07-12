@@ -22,7 +22,7 @@ public class Task2 {
     /**
      * Find the number of letters
      * @param inputStr The input string
-     * @return number of letters in string
+     * @return number of letters in the string
      */
     public static int numbersOfLetters(String inputStr) {
         int count;
@@ -44,7 +44,7 @@ public class Task2 {
     /**
      * Find number of sentences in text
      * @param inputStr The input string
-     * @return number of sentences in he string
+     * @return number of sentences in the string
      */
     public static int numberOfSentences(String inputStr) {
         return inputStr.split("[.!?(...)]+ +").length;
