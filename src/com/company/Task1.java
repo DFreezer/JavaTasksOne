@@ -5,28 +5,47 @@ import java.util.Random;
 
 public class Task1 {
 
-    //Function to initialize array of type int
+    /**
+     * Initialize array of type int
+     * @param length
+     * @param content
+     * @return array of type int
+     */
     public static int[] arrayInitialize(int length, int content) {
         int[] arr = new int[length];
         Arrays.setAll(arr, i -> content);
         return arr;
     }
 
-    //Function to initialize array of type double
+    /**
+     * Initialize array of type double
+     * @param length
+     * @param content
+     * @return array of type double
+     */
     public static double[] arrayInitialize(int length, double content) {
         double[] arr = new double[length];
         Arrays.setAll(arr, i -> content);
         return arr;
     }
 
-    //Function to initialize array of type String
+    /**
+     * Initialize array of type String
+     * @param length
+     * @param content
+     * @return array of type String
+     */
     public static String[] arrayInitialize(int length, String content) {
         String[] arr = new String[length];
         Arrays.setAll(arr, i -> content);
         return arr;
     }
 
-    //Function to initialize the array of type Integer with random numbers
+    /**
+     * Iinitialize the array of type Integer with random numbers
+     * @param length
+     * @return array of type Integer
+     */
     public static Integer[] randomArrayInitialize(int length) {
         Random random = new Random();
         Integer[] arr = new Integer[length];
@@ -34,13 +53,18 @@ public class Task1 {
         return arr;
     }
 
-    //Function to delete the selected array element
+    /**
+     * Delete the selected array element
+     * @param index element's index that will have deleted
+     * @param arr
+     * @return array of type Integer
+     */
     public static Integer[] deleteElementOfArray(int index, Integer... arr) {
         arr[index] = 0;
         return arr;
     }
 
-    //Function for testing
+    //For testing
     public static void test() {
         int[] arr = arrayInitialize(5, 3);
         double[] arr2 = arrayInitialize(5, 2.9);
